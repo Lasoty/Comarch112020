@@ -13,14 +13,7 @@ namespace ConsoleApp1
             bool ponow;
             do
             {
-                Console.Clear();
-                Console.WriteLine("KALKULATOR v1.0");
-                Console.WriteLine("MENU: ");
-                Console.WriteLine("  1. Dodawanie");
-                Console.WriteLine("  2. Odejmowanie");
-                Console.WriteLine("  3. Mnożenie");
-                Console.WriteLine("  4. Dzielenie");
-                Console.WriteLine("  5. Modulo");
+                PokazMenu();
 
                 Console.Write("Wybierz opcję: ");
                 string wyborString = Console.ReadLine();
@@ -47,7 +40,7 @@ namespace ConsoleApp1
                     switch (wyborInt)
                     {
                         case 1:
-                            wynik = x + y;
+                            wynik = Dodawanie(x, y);
                             break;
                         case 2:
                             wynik = x - y;
@@ -91,6 +84,23 @@ namespace ConsoleApp1
                 Console.Write("Czy chcesz wykonać kolejną operację? [T | n]");
                 ponow = Console.ReadKey().Key != ConsoleKey.N;
             } while (ponow);
+        }
+
+        private static float Dodawanie(int x, int y)
+        {
+            return x + y;
+        }
+
+        private static void PokazMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("KALKULATOR v1.0");
+            Console.WriteLine("MENU: ");
+            Console.WriteLine("  1. Dodawanie");
+            Console.WriteLine("  2. Odejmowanie");
+            Console.WriteLine("  3. Mnożenie");
+            Console.WriteLine("  4. Dzielenie");
+            Console.WriteLine("  5. Modulo");
         }
     }
 }
