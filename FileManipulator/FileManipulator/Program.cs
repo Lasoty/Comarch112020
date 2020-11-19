@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CwiczeniaReferencyjne;
+using System;
 using System.IO;
 using System.Windows.Forms;
 
@@ -14,6 +15,9 @@ namespace FileManipulator
                 Console.Clear();
                 Console.WriteLine("1. Zapisz dane do pliku");
                 Console.WriteLine("2. Odczyt danych z pliku");
+
+                Samochod audi = new Samochod();
+                
 
                 if (int.TryParse(Console.ReadLine(), out int wybor))
                 {
