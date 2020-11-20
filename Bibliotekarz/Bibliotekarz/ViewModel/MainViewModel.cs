@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using System.Linq;
 
 namespace Bibliotekarz.ViewModel
 {
@@ -22,6 +23,9 @@ namespace Bibliotekarz.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
+        private string filterText;
+        private List<Book> allBooks;
+
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
@@ -104,6 +108,32 @@ namespace Bibliotekarz.ViewModel
         }
 
         public ObservableCollection<Book> BookList { get; set; }
+
+        public string FilterText
+        {
+            get => filterText;
+            set 
+            {
+                filterText = value; 
+                FilterData();
+            }
+        }
+
+        private void FilterData()
+        {
+            if (allBooks == null) allBooks = new List<Book>(BookList);
+
+            BookList.Clear();
+            var result = allBooks.Where(book => book.Title.Contains(filterText))
+                                 .OrderBy(book => book.Title)
+                                 .ThenByDescending(book => book.Author);
+
+            foreach (var item in result)
+            {
+                BookList.Add(item);
+            }
+
+        }
 
         public ICommand CloseCommand
         {

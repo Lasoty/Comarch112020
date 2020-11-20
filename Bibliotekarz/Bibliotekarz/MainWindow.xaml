@@ -32,8 +32,23 @@
         </StatusBar>
 
         <Grid>
-            <DataGrid Margin="0,0,0,23" ItemsSource="{Binding BookList}"></DataGrid>
-            <TextBox Height="23" VerticalAlignment="Bottom" />
+            <DataGrid AutoGenerateColumns="False" 
+                      IsReadOnly="True"
+                      Margin="0,0,0,23"
+                      ItemsSource="{Binding BookList}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Id}" Header="Id" />
+                    <DataGridTextColumn Binding="{Binding Author}" Header="Autor"  Width="*" />
+                    <DataGridTextColumn Binding="{Binding Title}" Header="Tytuł" Width="2*" />
+                    <DataGridTextColumn Binding="{Binding PageCount}" Header="L. str" />
+                    <DataGridTextColumn Binding="{Binding IsBorrowed}" Header="Czy wyp." />
+                    <DataGridTextColumn Binding="{Binding Borrower.FirstName}" Header="Imię wyp." />
+                    <DataGridTextColumn Binding="{Binding Borrower.LastName}" Header="Nazwisko wyp." />
+                </DataGrid.Columns>
+            </DataGrid>
+            <TextBox Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}" 
+                     Height="23" 
+                     VerticalAlignment="Bottom" />
         </Grid>
     </DockPanel>
 </Window>
