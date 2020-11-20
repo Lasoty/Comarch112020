@@ -48,7 +48,9 @@ namespace Bibliotekarz.ViewModel
                 return new MainViewModel();
             }
         }
-        
+
+        public BookViewModel BookViewModel => new BookViewModel();
+
         public static void Cleanup()
         {
             // TODO Clear the ViewModels

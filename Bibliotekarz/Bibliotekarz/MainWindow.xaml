@@ -16,7 +16,7 @@
                 <MenuItem Header="Zam_knij" Command="{Binding CloseCommand}"/>
             </MenuItem>
             <MenuItem Header="_Edycja">
-                <MenuItem Header="_Nowy" />
+                <MenuItem Header="_Nowy" Command="{Binding AddNewBookCommand}" />
                 <MenuItem Header="_Usuń" />
             </MenuItem>
             <MenuItem Header="P_omoc"/>

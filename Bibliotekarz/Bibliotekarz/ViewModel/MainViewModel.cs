@@ -149,5 +149,19 @@ namespace Bibliotekarz.ViewModel
         {
             Environment.Exit(0);
         }
+
+        public ICommand AddNewBookCommand => new RelayCommand(AddNewBook);
+
+        private void AddNewBook()
+        {
+            BookWindow bookWindow = new BookWindow();
+            bool? result = bookWindow.ShowDialog();
+
+            if (result == true)
+            {
+                allBooks = null;
+                BookList.Add(bookWindow.Book);
+            }
+        }
     }
 }
