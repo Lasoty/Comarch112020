@@ -124,7 +124,9 @@ namespace Bibliotekarz.ViewModel
             if (allBooks == null) allBooks = new List<Book>(BookList);
 
             BookList.Clear();
-            var result = allBooks.Where(book => book.Title.Contains(filterText))
+            var result = allBooks.Where(book => book.Title.ToLower().Contains(filterText.ToLower()) 
+                                                || book.Author.ToLower().Contains(filterText.ToLower())
+                                                || book.PageCount.ToString().Contains(filterText))
                                  .OrderBy(book => book.Title)
                                  .ThenByDescending(book => book.Author);
 
